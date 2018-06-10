@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import static java.util.Calendar.DATE;
 import java.util.Date;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,17 +19,23 @@ import javax.swing.JOptionPane;
  * @author Asanka
  */
 public class managebook extends javax.swing.JFrame {
-    
+    Locale locale;
     String barcode;
     int id;
 
     /**
      * Creates new form managebook
      */
-    public managebook() {
+    public managebook(Locale locale) {
         initComponents();
+        try {
+              initlocalization();
+        } catch (Exception e) {
+        }
+      
         setLocationRelativeTo(null);
         jTextField1.requestFocus();
+        this.locale = locale;
     }
 
     /**
@@ -63,7 +70,8 @@ public class managebook extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
-        jTextField2.setText("jTextField2");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("bundles/managebookbundle"); // NOI18N
+        jTextField2.setText(bundle.getString("managebook.jTextField2.text")); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,30 +85,30 @@ public class managebook extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Enter Barcode Here");
+        jLabel1.setText(bundle.getString("managebook.jLabel1.text")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 643, -1));
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Book Name");
+        jLabel2.setText(bundle.getString("managebook.jLabel2.text")); // NOI18N
         jLabel2.setOpaque(true);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Book ID");
+        jLabel3.setText(bundle.getString("managebook.jLabel3.text")); // NOI18N
         jLabel3.setOpaque(true);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Donater");
+        jLabel4.setText(bundle.getString("managebook.jLabel4.text")); // NOI18N
         jLabel4.setOpaque(true);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setText("Date");
+        jLabel5.setText(bundle.getString("managebook.jLabel5.text")); // NOI18N
         jLabel5.setOpaque(true);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("Author");
+        jLabel6.setText(bundle.getString("managebook.jLabel6.text")); // NOI18N
         jLabel6.setOpaque(true);
 
         jTextField_name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -113,16 +121,16 @@ public class managebook extends javax.swing.JFrame {
         jTextField_author.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel_id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel_id.setText("ID");
+        jLabel_id.setText(bundle.getString("managebook.jLabel_id.text")); // NOI18N
         jLabel_id.setOpaque(true);
 
         jLabel_date.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel_date.setText("Date");
+        jLabel_date.setText(bundle.getString("managebook.jLabel_date.text")); // NOI18N
         jLabel_date.setOpaque(true);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/approved.png"))); // NOI18N
-        jButton1.setText("Update");
+        jButton1.setText(bundle.getString("managebook.jButton1.text")); // NOI18N
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,7 +199,7 @@ public class managebook extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.jpg"))); // NOI18N
-        jButton2.setText("Back");
+        jButton2.setText(bundle.getString("managebook.jButton2.text")); // NOI18N
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,17 +212,17 @@ public class managebook extends javax.swing.JFrame {
         jPanel2.setOpaque(false);
 
         jLabel_name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel_name.setText("Book Name");
+        jLabel_name.setText(bundle.getString("managebook.jLabel_name.text")); // NOI18N
         jLabel_name.setOpaque(true);
 
         jLabel_id2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel_id2.setText("Book ID");
+        jLabel_id2.setText(bundle.getString("managebook.jLabel_id2.text")); // NOI18N
         jLabel_id2.setOpaque(true);
 
         jButton3.setBackground(new java.awt.Color(255, 153, 153));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cancel.png"))); // NOI18N
-        jButton3.setText("REMOVE BOOK");
+        jButton3.setText(bundle.getString("managebook.jButton3.text")); // NOI18N
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,7 +262,7 @@ public class managebook extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(204, 0, 0));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logO.png"))); // NOI18N
-        jLabel8.setText("LogOut");
+        jLabel8.setText(bundle.getString("managebook.jLabel8.text")); // NOI18N
         jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -285,7 +293,7 @@ public class managebook extends javax.swing.JFrame {
             String sql = "update book set name='" + jTextField_name.getText() + "' , donater='" + jTextField_donator.getText() + "', author='" + jTextField_author.getText() + "' where id='" + id + "'";
             Insert_Update(sql);
             this.dispose();
-            new managebook().setVisible(true);
+            new managebook(locale).setVisible(true);
         }
         
 
@@ -298,14 +306,14 @@ public class managebook extends javax.swing.JFrame {
             String sql2 = "delete from book where id='" + id + "'";
             Insert_Update(sql2);
             this.dispose();
-            new managebook().setVisible(true);
+            new managebook(locale).setVisible(true);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
          this.dispose();
-            new admin().setVisible(true);
+            new admin(locale).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
@@ -315,7 +323,7 @@ public class managebook extends javax.swing.JFrame {
 
         if (reply == JOptionPane.YES_OPTION) {
             this.dispose();
-            new Home().setVisible(true);
+            new Home(locale).setVisible(true);
         }
 
     }//GEN-LAST:event_jLabel8MouseClicked
@@ -393,7 +401,7 @@ public class managebook extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new managebook().setVisible(true);
+        //        new managebook().setVisible(true);
             }
         });
     }
@@ -422,4 +430,86 @@ public class managebook extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_donator;
     private javax.swing.JTextField jTextField_name;
     // End of variables declaration//GEN-END:variables
+
+    private void initlocalization() {
+          java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("bundles/managebookbundle",locale); // NOI18N
+        jTextField2.setText(bundle.getString("managebook.jTextField2.text")); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+       
+        jLabel1.setText(bundle.getString("managebook.jLabel1.text")); // NOI18N
+ 
+    
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText(bundle.getString("managebook.jLabel2.text")); // NOI18N
+    
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText(bundle.getString("managebook.jLabel3.text")); // NOI18N
+   
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setText(bundle.getString("managebook.jLabel4.text")); // NOI18N
+    
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText(bundle.getString("managebook.jLabel5.text")); // NOI18N
+  
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setText(bundle.getString("managebook.jLabel6.text")); // NOI18N
+    
+
+        jTextField_name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+
+        jTextField_donator.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+ 
+
+        jTextField_author.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+       
+
+        jLabel_id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel_id.setText(bundle.getString("managebook.jLabel_id.text")); // NOI18N
+   
+
+        jLabel_date.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel_date.setText(bundle.getString("managebook.jLabel_date.text")); // NOI18N
+   
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/approved.png"))); // NOI18N
+        jButton1.setText(bundle.getString("managebook.jButton1.text")); // NOI18N
+
+
+
+
+
+        jLabel_name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel_name.setText(bundle.getString("managebook.jLabel_name.text")); // NOI18N
+
+
+        jLabel_id2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel_id2.setText(bundle.getString("managebook.jLabel_id2.text")); // NOI18N
+ 
+
+
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cancel.png"))); // NOI18N
+        jButton3.setText(bundle.getString("managebook.jButton3.text")); // NOI18N
+
+
+
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+  
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logO.png"))); // NOI18N
+        jLabel8.setText(bundle.getString("managebook.jLabel8.text")); // NOI18N
+    
+       
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/123 copy.jpg"))); // NOI18N
+     
+
+       
+    }
 }

@@ -8,6 +8,8 @@ package Interface;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,12 +17,17 @@ import javax.swing.JOptionPane;
  * @author Asanka
  */
 public class login extends javax.swing.JFrame {
-
+Locale locale;
     /**
      * Creates new form login
+     * @param locale
      */
-    public login() {
+    public login(Locale locale) {
         initComponents();
+        try {
+                  localizeinit();
+        } catch (Exception e) {
+        }
         setLocationRelativeTo(null);
     }
 
@@ -51,10 +58,11 @@ public class login extends javax.swing.JFrame {
         jPanel1.setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Username");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("bundles/loginBundle"); // NOI18N
+        jLabel1.setText(bundle.getString("login.jLabel1.text")); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Password");
+        jLabel2.setText(bundle.getString("login.jLabel2.text")); // NOI18N
 
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -63,7 +71,7 @@ public class login extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("Login");
+        jButton1.setText(bundle.getString("login.jButton1.text")); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -71,7 +79,7 @@ public class login extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Fogot Password");
+        jLabel3.setText(bundle.getString("login.jLabel3.text")); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -128,12 +136,12 @@ public class login extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel5.setText("LOGIN HERE");
+        jLabel5.setText(bundle.getString("login.jLabel5.text")); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.jpg"))); // NOI18N
-        jButton2.setText("Back");
+        jButton2.setText(bundle.getString("login.jButton2.text")); // NOI18N
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,12 +177,12 @@ public class login extends javax.swing.JFrame {
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
         this.dispose();
-        new password().setVisible(true);
+        new password(locale).setVisible(true);
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
-        new Home().setVisible(true);
+        new Home(locale).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public void login() {
@@ -192,7 +200,7 @@ public class login extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery(Sql);
             
             if(rs.next()){
-            new admin().setVisible(true);
+            new admin(locale).setVisible(true);
             this.dispose();
             }
             else{
@@ -236,7 +244,7 @@ public class login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(true);
+               // new login().setVisible(true);
             }
         });
     }
@@ -253,4 +261,37 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    private void localizeinit() {
+     jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("bundles/loginBundle",locale); // NOI18N
+        jLabel1.setText(bundle.getString("login.jLabel1.text")); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText(bundle.getString("login.jLabel2.text")); // NOI18N
+
+   
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setText(bundle.getString("login.jButton1.text")); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText(bundle.getString("login.jLabel3.text")); // NOI18N
+
+
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel5.setText(bundle.getString("login.jLabel5.text")); // NOI18N
+
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.jpg"))); // NOI18N
+        jButton2.setText(bundle.getString("login.jButton2.text")); // NOI18N
+     
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/background_m3_login_for_m1_by_andreascy-d3ecbzg copy.jpg"))); // NOI18N
+
+
+  
+    }
 }

@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,9 +23,13 @@ import javax.swing.JOptionPane;
  */
 public class newbook extends javax.swing.JFrame {
 
-   
+   Locale locale;
     public newbook() {
         initComponents();
+        try {
+             localeinit();
+        } catch (Exception e) {
+        }
         setLocationRelativeTo(null);
         Auto_book_id();
         jLabel_date.setText(currentDay);
@@ -101,27 +106,28 @@ public class newbook extends javax.swing.JFrame {
         jPanel1.setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Book ID");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("bundles/neewbookbundle"); // NOI18N
+        jLabel1.setText(bundle.getString("newbook.jLabel1.text")); // NOI18N
         jLabel1.setOpaque(true);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Name of the Book");
+        jLabel2.setText(bundle.getString("newbook.jLabel2.text")); // NOI18N
         jLabel2.setOpaque(true);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Barcode");
+        jLabel3.setText(bundle.getString("newbook.jLabel3.text")); // NOI18N
         jLabel3.setOpaque(true);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Author");
+        jLabel4.setText(bundle.getString("newbook.jLabel4.text")); // NOI18N
         jLabel4.setOpaque(true);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setText("Donater ID");
+        jLabel5.setText(bundle.getString("newbook.jLabel5.text")); // NOI18N
         jLabel5.setOpaque(true);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("Date");
+        jLabel6.setText(bundle.getString("newbook.jLabel6.text")); // NOI18N
         jLabel6.setOpaque(true);
 
         jTextField_name.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -138,16 +144,16 @@ public class newbook extends javax.swing.JFrame {
         jTextField_donater.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel_date.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel_date.setText("date");
+        jLabel_date.setText(bundle.getString("newbook.jLabel_date.text")); // NOI18N
         jLabel_date.setOpaque(true);
 
         jLabel_id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel_id.setText("id");
+        jLabel_id.setText(bundle.getString("newbook.jLabel_id.text")); // NOI18N
         jLabel_id.setOpaque(true);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cancel.png"))); // NOI18N
-        jButton1.setText("Clear");
+        jButton1.setText(bundle.getString("newbook.jButton1.text")); // NOI18N
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +163,7 @@ public class newbook extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/approved.png"))); // NOI18N
-        jButton2.setText("Save");
+        jButton2.setText(bundle.getString("newbook.jButton2.text")); // NOI18N
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,7 +173,7 @@ public class newbook extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.jpg"))); // NOI18N
-        jButton3.setText("Back");
+        jButton3.setText(bundle.getString("newbook.jButton3.text")); // NOI18N
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,7 +269,7 @@ public class newbook extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(204, 0, 0));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logO.png"))); // NOI18N
-        jLabel8.setText("LogOut");
+        jLabel8.setText(bundle.getString("newbook.jLabel8.text")); // NOI18N
         jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -297,14 +303,14 @@ public class newbook extends javax.swing.JFrame {
 
         if (reply == JOptionPane.YES_OPTION) {
             this.dispose();
-            new Home().setVisible(true);
+            new Home(locale).setVisible(true);
         }
 
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
      this.dispose();
-            new admin().setVisible(true);
+            new admin(locale).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -368,7 +374,7 @@ public class newbook extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new newbook().setVisible(true);
+          //      new newbook().setVisible(true);
             }
         });
     }
@@ -393,4 +399,60 @@ public class newbook extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_donater;
     private javax.swing.JTextField jTextField_name;
     // End of variables declaration//GEN-END:variables
+
+    private void localeinit() {
+   
+        
+          java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("bundles/neewbookbundle",locale); // NOI18N
+        jLabel1.setText(bundle.getString("newbook.jLabel1.text")); // NOI18N
+        jLabel1.setOpaque(true);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText(bundle.getString("newbook.jLabel2.text")); // NOI18N
+        jLabel2.setOpaque(true);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText(bundle.getString("newbook.jLabel3.text")); // NOI18N
+        jLabel3.setOpaque(true);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setText(bundle.getString("newbook.jLabel4.text")); // NOI18N
+        jLabel4.setOpaque(true);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText(bundle.getString("newbook.jLabel5.text")); // NOI18N
+        jLabel5.setOpaque(true);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setText(bundle.getString("newbook.jLabel6.text")); // NOI18N
+    
+        jLabel_date.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel_date.setText(bundle.getString("newbook.jLabel_date.text")); // NOI18N
+
+
+        jLabel_id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel_id.setText(bundle.getString("newbook.jLabel_id.text")); // NOI18N
+  
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cancel.png"))); // NOI18N
+        jButton1.setText(bundle.getString("newbook.jButton1.text")); // NOI18N
+     
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/approved.png"))); // NOI18N
+        jButton2.setText(bundle.getString("newbook.jButton2.text")); // NOI18N
+      
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.jpg"))); // NOI18N
+        jButton3.setText(bundle.getString("newbook.jButton3.text")); // NOI18N
+  
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+   
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logO.png"))); // NOI18N
+        jLabel8.setText(bundle.getString("newbook.jLabel8.text")); // NOI18N
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/123 copy.jpg"))); // NOI18N
+    }
 }
