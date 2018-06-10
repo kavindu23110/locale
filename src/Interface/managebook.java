@@ -35,7 +35,6 @@ public class managebook extends javax.swing.JFrame {
       
         setLocationRelativeTo(null);
         jTextField1.requestFocus();
-        this.locale = locale;
     }
 
     /**
