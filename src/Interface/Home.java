@@ -116,22 +116,22 @@ ResourceBundle bundle ;
    jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/123 copy.jpg"))); // NOI18N
     jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/setting.png"))); // NOI18N
        jLabel2.setText(bundle.getString("Home.jLabel2.text")); // NOI18N
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Nirmala UI", 1, 20)); // NOI18N
             //  java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("bundles/homebundle"); // NOI18N
         jTextField2.setText(bundle.getString("Home.jTextField2.text")); // NOI18N
 
 
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
 
 
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Nirmala UI", 1, 36)); // NOI18N
    
         jLabel1.setText(bundle.getString("Home.jLabel1.text")); // NOI18N
    
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
 
         jLabel9.setText(bundle.getString("Home.jLabel9.text")); // NOI18N
   
