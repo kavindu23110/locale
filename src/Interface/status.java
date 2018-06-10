@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,12 +17,17 @@ import javax.swing.JOptionPane;
  * @author Asanka
  */
 public class status extends javax.swing.JFrame {
-
+Locale locale;
     /**
      * Creates new form status
+     * @param locale
      */
-    public status() {
+    public status(Locale locale) {
         initComponents();
+        try {
+             initlocale();
+        } catch (Exception e) {
+        }
         setLocationRelativeTo(null);
         Bindcombo();
     }
@@ -77,11 +83,12 @@ public class status extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Enter Book ID OR Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("bundles/statusbundle"); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("status.jPanel1.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel1.setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Book Name");
+        jLabel2.setText(bundle.getString("status.jLabel2.text")); // NOI18N
         jLabel2.setOpaque(true);
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -94,12 +101,12 @@ public class status extends javax.swing.JFrame {
         });
 
         jLabel_bookname.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel_bookname.setText("name");
+        jLabel_bookname.setText(bundle.getString("status.jLabel_bookname.text")); // NOI18N
         jLabel_bookname.setOpaque(true);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/approved.png"))); // NOI18N
-        jButton2.setText("CHECK");
+        jButton2.setText(bundle.getString("status.jButton2.text")); // NOI18N
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +115,7 @@ public class status extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Book ID");
+        jLabel1.setText(bundle.getString("status.jLabel1.text")); // NOI18N
         jLabel1.setOpaque(true);
 
         jTextField_bookid.addActionListener(new java.awt.event.ActionListener() {
@@ -168,38 +175,38 @@ public class status extends javax.swing.JFrame {
 
         jLabel_status.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel_status.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_status.setText("STATUS");
+        jLabel_status.setText(bundle.getString("status.jLabel_status.text")); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Reg. Number");
+        jLabel4.setText(bundle.getString("status.jLabel4.text")); // NOI18N
         jLabel4.setOpaque(true);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setText("Phone Number");
+        jLabel5.setText(bundle.getString("status.jLabel5.text")); // NOI18N
         jLabel5.setOpaque(true);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("Date");
+        jLabel6.setText(bundle.getString("status.jLabel6.text")); // NOI18N
         jLabel6.setOpaque(true);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("Time");
+        jLabel7.setText(bundle.getString("status.jLabel7.text")); // NOI18N
         jLabel7.setOpaque(true);
 
         jLabe_reg.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabe_reg.setText("WAITING");
+        jLabe_reg.setText(bundle.getString("status.jLabe_reg.text")); // NOI18N
         jLabe_reg.setOpaque(true);
 
         jLabel_phone.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel_phone.setText("WAITING");
+        jLabel_phone.setText(bundle.getString("status.jLabel_phone.text")); // NOI18N
         jLabel_phone.setOpaque(true);
 
         jLabel_date.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel_date.setText("WAITING");
+        jLabel_date.setText(bundle.getString("status.jLabel_date.text")); // NOI18N
         jLabel_date.setOpaque(true);
 
         jLabel_time.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel_time.setText("WAITING");
+        jLabel_time.setText(bundle.getString("status.jLabel_time.text")); // NOI18N
         jLabel_time.setOpaque(true);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -259,7 +266,7 @@ public class status extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.jpg"))); // NOI18N
-        jButton1.setText("Back");
+        jButton1.setText(bundle.getString("status.jButton1.text")); // NOI18N
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,13 +276,13 @@ public class status extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 570, 122, 39));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel8.setText("BOOK STATUS");
+        jLabel8.setText(bundle.getString("status.jLabel8.text")); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(204, 0, 0));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logO.png"))); // NOI18N
-        jLabel9.setText("LogOut");
+        jLabel9.setText(bundle.getString("status.jLabel9.text")); // NOI18N
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -285,7 +292,7 @@ public class status extends javax.swing.JFrame {
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 20, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/123 copy.jpg"))); // NOI18N
-        jLabel3.setText("BOOK STATUS");
+        jLabel3.setText(bundle.getString("status.jLabel3.text")); // NOI18N
         jLabel3.setInheritsPopupMenu(false);
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 664));
 
@@ -327,13 +334,13 @@ JOptionPane.showMessageDialog(null, "Please Select the  Book", "Are you Sure", J
 
         if (reply == JOptionPane.YES_OPTION) {
             this.dispose();
-            new Home().setVisible(true);
+            new Home(locale).setVisible(true);
         }
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        this.dispose();
-            new admin().setVisible(true);
+            new admin(locale).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void details(){
@@ -412,7 +419,7 @@ JOptionPane.showMessageDialog(null, "Please Select the  Book", "Are you Sure", J
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new status().setVisible(true);
+      //          new status().setVisible(true);
             }
         });
     }
@@ -440,4 +447,85 @@ JOptionPane.showMessageDialog(null, "Please Select the  Book", "Are you Sure", J
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField_bookid;
     // End of variables declaration//GEN-END:variables
+
+    private void initlocale() {
+    java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("bundles/statusbundle",locale); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, bundle.getString("status.jPanel1.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+ 
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText(bundle.getString("status.jLabel2.text")); // NOI18N
+
+
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        jLabel_bookname.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel_bookname.setText(bundle.getString("status.jLabel_bookname.text")); // NOI18N
+
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/approved.png"))); // NOI18N
+        jButton2.setText(bundle.getString("status.jButton2.text")); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText(bundle.getString("status.jLabel1.text")); // NOI18N
+
+  
+
+        jLabel_status.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+
+        jLabel_status.setText(bundle.getString("status.jLabel_status.text")); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setText(bundle.getString("status.jLabel4.text")); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText(bundle.getString("status.jLabel5.text")); // NOI18N
+     
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setText(bundle.getString("status.jLabel6.text")); // NOI18N
+    
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setText(bundle.getString("status.jLabel7.text")); // NOI18N
+      
+
+        jLabe_reg.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabe_reg.setText(bundle.getString("status.jLabe_reg.text")); // NOI18N
+
+
+        jLabel_phone.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel_phone.setText(bundle.getString("status.jLabel_phone.text")); // NOI18N
+        jLabel_phone.setOpaque(true);
+
+        jLabel_date.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel_date.setText(bundle.getString("status.jLabel_date.text")); // NOI18N
+    
+
+        jLabel_time.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel_time.setText(bundle.getString("status.jLabel_time.text")); // NOI18N
+
+
+
+
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.jpg"))); // NOI18N
+        jButton1.setText(bundle.getString("status.jButton1.text")); // NOI18N
+   
+    
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel8.setText(bundle.getString("status.jLabel8.text")); // NOI18N
+  
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logO.png"))); // NOI18N
+        jLabel9.setText(bundle.getString("status.jLabel9.text")); // NOI18N
+
+    
+
+    }
 }

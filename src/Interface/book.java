@@ -39,7 +39,7 @@ Locale locale;
             try {
              initlocale();
         } catch (Exception eg) {
-            System.out.println(eg);
+            //System.out.println(eg);
         }
             
             

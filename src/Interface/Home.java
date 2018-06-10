@@ -35,7 +35,10 @@ ResourceBundle bundle ;
    //  rb=ResourceBundle.getBundle("homebundle",locale);
       
         initComponents();
-          initlocale(bundle);
+        try {
+               initlocale(bundle);
+        } catch (Exception e) {
+        }
         setLocationRelativeTo(null);
         jTextField1.requestFocus();
     }

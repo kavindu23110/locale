@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.Session;
@@ -27,11 +28,17 @@ public class password extends javax.swing.JFrame {
 String Email=null;
 String Realpassword=null;
 int pass=0;
+Locale locale;
     /**
      * Creates new form password
      */
-    public password() {
+    public password(Locale locale) {
         initComponents();
+       
+        try {
+            initlocale();
+        } catch (Exception e) {
+        }
         setLocationRelativeTo(null);
     }
 
@@ -205,7 +212,7 @@ int pass=0;
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
-        new login().setVisible(true);
+        new login(locale).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
        public void reserp(){
@@ -284,7 +291,7 @@ int pass=0;
            
            JOptionPane.showMessageDialog(rootPane, "Password send successfully");
           this.dispose();
-          new login().setVisible(true);
+          new login(locale).setVisible(true);
            
         }catch(Exception ex)
         {
@@ -327,7 +334,7 @@ int pass=0;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new password().setVisible(true);
+                //new password().setVisible(true);
             }
         });
     }
@@ -347,4 +354,35 @@ int pass=0;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+
+    private void initlocale() {
+
+                java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("bundles/passwordsBundle",locale); // NOI18N
+              
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+   
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+      
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/approved.png"))); // NOI18N
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/approved.png"))); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+       
+
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/back.jpg"))); // NOI18N
+     
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/295128.png"))); // NOI18N
+   
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/background_m3_login_for_m1_by_andreascy-d3ecbzg copy.jpg"))); // NOI18N
+              
+    }
 }

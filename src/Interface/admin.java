@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import java.util.Locale;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,8 +17,13 @@ public class admin extends javax.swing.JFrame {
     /**
      * Creates new form admin
      */
-    public admin() {
+    Locale locale;
+    public admin(Locale locale) {
         initComponents();
+        try {
+                    localeinit();
+        } catch (Exception e) {
+        }
         setLocationRelativeTo(null);
     }
 
@@ -45,7 +51,8 @@ public class admin extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/setting.png"))); // NOI18N
-        jButton1.setText("MANAGE BOOK");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("bundles/adminbundle"); // NOI18N
+        jButton1.setText(bundle.getString("admin.jButton1.text")); // NOI18N
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,7 +62,7 @@ public class admin extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/book.png"))); // NOI18N
-        jButton2.setText("NEW BOOK");
+        jButton2.setText(bundle.getString("admin.jButton2.text")); // NOI18N
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,7 +72,7 @@ public class admin extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/approved.png"))); // NOI18N
-        jButton4.setText("BOOK STATUS");
+        jButton4.setText(bundle.getString("admin.jButton4.text")); // NOI18N
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +109,7 @@ public class admin extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 0, 0));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logO.png"))); // NOI18N
-        jLabel2.setText("LogOut");
+        jLabel2.setText(bundle.getString("admin.jLabel2.text")); // NOI18N
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -120,19 +127,19 @@ public class admin extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new status().setVisible(true);
+        new status(locale).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new newbook().setVisible(true);
+        new newbook(locale).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new managebook().setVisible(true);
+        new managebook(locale).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -142,7 +149,7 @@ public class admin extends javax.swing.JFrame {
 
         if (reply == JOptionPane.YES_OPTION) {
           this.dispose();
-        new Home().setVisible(true);
+        new Home(locale).setVisible(true);
         }
         
     }//GEN-LAST:event_jLabel2MouseClicked
@@ -177,7 +184,7 @@ public class admin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new admin().setVisible(true);
+            //    new admin(locale).setVisible(true);
             }
         });
     }
@@ -190,4 +197,36 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    private void localeinit() {
+ 
+                
+                   java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("bundles/adminbundle",locale); // NOI18N   
+              jButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/setting.png"))); // NOI18N
+  
+        jButton1.setText(bundle.getString("admin.jButton1.text")); // NOI18N
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/book.png"))); // NOI18N
+        jButton2.setText(bundle.getString("admin.jButton2.text")); // NOI18N
+ 
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/approved.png"))); // NOI18N
+        jButton4.setText(bundle.getString("admin.jButton4.text")); // NOI18N
+  
+
+   
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+    
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logO.png"))); // NOI18N
+        jLabel2.setText(bundle.getString("admin.jLabel2.text")); // NOI18N
+
+  
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/123 copy.jpg"))); // NOI18N
+    
+                
+    }
 }
