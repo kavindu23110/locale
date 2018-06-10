@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
 public class newbook extends javax.swing.JFrame {
 
    Locale locale;
-    public newbook() {
+    public newbook(   Locale locale) {
         initComponents();
         try {
              localeinit();
